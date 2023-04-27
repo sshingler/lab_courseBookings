@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -66,5 +67,13 @@ public class Course {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public void addBookings(Booking ...bookings) {
+        this.bookings.addAll(List.of(bookings));
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
     }
 }
