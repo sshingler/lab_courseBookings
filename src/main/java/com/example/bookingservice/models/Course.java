@@ -1,6 +1,10 @@
 package com.example.bookingservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -18,10 +22,15 @@ public class Course {
     @Column (name="rating")
     private int rating;
 
+    @JsonIgnoreProperties("course")
+    @OneToMany(mappedBy = "course")
+    private List<Booking> bookings;
+
     public Course(String name, String town, int starRating){
         this.name = name;
         this.town = town;
         this.rating = starRating;
+        this.bookings = new ArrayList<>();
     }
 
 
