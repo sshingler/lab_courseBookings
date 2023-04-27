@@ -12,7 +12,6 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
     private Long id;
 
     @Column (name = "name")
@@ -24,7 +23,7 @@ public class Customer {
     @Column (name = "age")
     private int age;
 
-    @JsonIgnoreProperties("customer")
+    @JsonIgnoreProperties({"customer"})
     @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
 

@@ -12,7 +12,6 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
     private Long id;
 
     @Column (name="name")
@@ -22,8 +21,8 @@ public class Course {
     @Column (name="rating")
     private int rating;
 
-    @JsonIgnoreProperties("course")
-    @OneToMany(mappedBy = "course")
+    @JsonIgnoreProperties({"course"})
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
     public Course(String name, String town, int starRating){

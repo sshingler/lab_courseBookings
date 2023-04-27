@@ -9,18 +9,17 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
     private Long id;
 
     @Column(name = "date")
     private String date;
 
-    @JsonIgnoreProperties("bookings")
+    @JsonIgnoreProperties({"bookings"})
     @ManyToOne
     @JoinColumn(name="course_id", nullable = false)
     private Course course;
 
-    @JsonIgnoreProperties("bookings")
+    @JsonIgnoreProperties({"bookings"})
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
@@ -29,6 +28,10 @@ public class Booking {
         this.date = date;
         this.course = course;
         this.customer = customer;
+    }
+
+    public Booking(){
+
     }
 
     public Long getId() {
